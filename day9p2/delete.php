@@ -1,15 +1,15 @@
 <?php 
 
-include_once("config.php")
+include_once("config.php");
 
-$id = 1;
+$id = $_GET['id'];
 
 $sql =  "DELETE FROM users WHERE id=:id";
 
-$deleteUsers = $conn->prepare($sql);
-$deleteUsers ->bindparam(':id', $id);
-$deleteUsers ->execute(;) 
+$deleteUsers = $connect->prepare($sql);
+$deleteUsers->bindparam(':id', $id);
+$deleteUsers->execute(); 
 
-header('Location:dashboard.php');
+header('Location:index.php');
 
 ?>

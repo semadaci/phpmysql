@@ -46,11 +46,11 @@
         foreach($users as $user){
             ?>
             <tr>
-                <td><?=$user['id']?></td>
-                <td><?=$user['name']?></td>
-                <td><?=$user['username']?></td>
-                <td><?=$user['email']?></td>
-                <td><?="<a href = 'delete.php?id=1'>Delete</a>" ?></td>
+                <td><?=$user['id']?> </td>
+                <td><?=$user['name']?> </td>
+                <td><?=$user['username']?> </td>
+                <td><?=$user['email']?> </td>
+                <td><?="<a href = 'delete.php?id=$user[id]'>Delete</a>" ?></td>
             </tr>
             <?php
         }
