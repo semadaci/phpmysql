@@ -1,25 +1,46 @@
-<?php
-         session_start();
-         include_once('config.php');
-         
-         $user_id = $_SESSION['id'];
-         $movie_id = $_SESSION['movie_id'];
+<?php 
+ /*Creating a session  based on a session identifier, passed via a GET or POST request.
+  We will include config.php for connection with database.
+  */
 
-         $nr_tickets = $_POST['nr_tickets'];
-         $date = $_POST['date'];
-         $date = $_POST['time'];
+	session_start();
 
-         $sql = "INSERT INTO bookings(user_id, mosvie_id, nr_tickets, date, time) VALUES (:user_id, :mosvie_id, :nr_tickets, date, time)  ";
-         
+	include_once('config.php');
 
-          $insertBooking = $conn->prepare($sql);
-$insertBooking->bindParam(':user_id',  $user_id);
-        $insertBooking->bindParam(':movie_id',  $movie_id);
-        $insertBooking->bindParam(':nr_tickets',    $nr_tickets);
-        $insertBooking->bindParam(':date',  $date);
-        $insertBooking->bindParam(':time',  $time);
+	//Getting values 'id' and 'movie_id' using $_SESSION
+	$user_id = $_SESSION['id'];
+    $movie_id = $_SESSION['movie_id'];
 
-        $insertBooking->execute();
+	//Getting some of data from details.php form
+	$nr_tickets = $_POST['nr_tickets'];
+	$date = $_POST['date'];
+	$time = $_POST['time'];
+	//Inserting the new data into database
+	$sql = "INSERT INTO bookings(user_id, movie_id, nr_tickets, date, time) VALUES (:user_id, :movie_id, :nr_tickets, :date, :time)";
 
-        header("Location: home.php")
-?>
+	$insertBooking = $conn->prepare($sql);
+
+	$insertBooking->bindParam(":user_id", $user_id);
+	$insertBooking->bindParam(":movie_id", $movie_id);
+	$insertBooking->bindParam(":nr_tickets", $nr_tickets);
+	$insertBooking->bindParam(":date", $date);
+	$insertBooking->bindParam(":time", $time);
+
+	$insertBooking->execute();
+
+	header("Location: home.php");
+
+	
+	
+
+
+
+
+
+
+
+
+
+
+
+ ?>

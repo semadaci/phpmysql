@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 24, 2025 at 04:45 PM
--- Server version: 10.4.32-MariaDB
--- PHP Version: 8.2.12
+-- Generation Time: Dec 16, 2022 at 11:46 AM
+-- Server version: 10.4.24-MariaDB
+-- PHP Version: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -29,19 +29,20 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `bookings` (
   `id` int(255) NOT NULL,
-  `users_id` int(255) NOT NULL,
-  `movies_id` int(255) NOT NULL,
+  `user_id` int(255) NOT NULL,
+  `movie_id` int(255) NOT NULL,
   `nr_tickets` int(255) NOT NULL,
-  `data` varchar(255) NOT NULL,
+  `date` varchar(255) NOT NULL,
+  `is_approved` varchar(255) NOT NULL,
   `time` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `bookings`
 --
 
-INSERT INTO `bookings` (`id`, `users_id`, `movies_id`, `nr_tickets`, `data`, `time`) VALUES
-(3, 2, 1, 2, '2022-12-16', '19:00');
+INSERT INTO `bookings` (`id`, `user_id`, `movie_id`, `nr_tickets`, `date`, `is_approved`, `time`) VALUES
+(3, 2, 1, 2, '2022-12-16', 'true', '19:00');
 
 -- --------------------------------------------------------
 
@@ -56,7 +57,7 @@ CREATE TABLE `movies` (
   `movie_quality` varchar(255) NOT NULL,
   `movie_rating` int(255) NOT NULL,
   `movie_image` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `movies`
@@ -81,7 +82,7 @@ CREATE TABLE `users` (
   `password` varchar(255) NOT NULL,
   `confirm_password` varchar(255) NOT NULL,
   `is_admin` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `users`
@@ -116,7 +117,7 @@ ALTER TABLE `users`
 
 --
 -- AUTO_INCREMENT for dumped tables
---s
+--
 
 --
 -- AUTO_INCREMENT for table `bookings`
